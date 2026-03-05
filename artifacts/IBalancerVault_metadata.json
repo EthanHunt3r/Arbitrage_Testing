@@ -1,0 +1,75 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract IFlashLoanRecipient",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IERC20[]",
+						"name": "tokens",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "amounts",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "bytes",
+						"name": "userData",
+						"type": "bytes"
+					}
+				],
+				"name": "flashLoan",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Minimal Balancer V2 Vault interface.      Canonical address (same on every supported chain):      0xBA12222222228d8Ba445958a75a0704d566BF2C8",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ArbitrageBot.sol": "IBalancerVault"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ArbitrageBot.sol": {
+			"keccak256": "0xf5fde45ef5bec1b39d42f5a81099dc3797f046c3ec48051ac7756848a32bf4c3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ca01f3f8bc0997e95f976eeeafa48c65d57d2a6c0ffa3783e276126743c520e",
+				"dweb:/ipfs/QmZposhxt9ak2DbSBNJ2Rwq9uqV7Ac28UvJ6uMG1A1tm8J"
+			]
+		}
+	},
+	"version": 1
+}

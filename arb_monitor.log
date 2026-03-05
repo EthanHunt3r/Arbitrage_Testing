@@ -1,0 +1,53 @@
+2026-03-04 21:27:27,130  INFO      Connected to chain 1  block #24,583,791
+2026-03-04 21:27:27,130  INFO      Monitoring 6 pairs across 3 DEXes
+2026-03-04 21:27:27,130  INFO      Min profit threshold: $20.0  |  Gas estimate: $8.0
+2026-03-04 21:27:27,130  INFO      Telegram notifications: ENABLED
+2026-03-04 21:41:26,041  INFO      Connected to chain 1  block #24,583,861
+2026-03-04 21:41:26,041  INFO      Monitoring 6 pairs across 3 DEXes
+2026-03-04 21:41:26,041  INFO      Min profit threshold: $15.0  |  Gas estimate: $8.0
+2026-03-04 21:41:26,041  INFO      Telegram notifications: ENABLED
+2026-03-04 22:09:28,772  INFO      Connected to chain 1  block #24,584,001
+2026-03-04 22:09:28,773  INFO      Monitoring 6 pairs across 3 DEXes
+2026-03-04 22:09:28,773  INFO      Min profit threshold: $5.0  |  Gas estimate: $1.0
+2026-03-04 22:09:28,773  INFO      Telegram notifications: ENABLED
+2026-03-04 22:11:35,627  INFO      Connected to chain 1  block #24,584,011
+2026-03-04 22:11:35,627  INFO      Monitoring 6 pairs across 3 DEXes
+2026-03-04 22:11:35,627  INFO      Min profit threshold: $5.0  |  Gas estimate: $1.0
+2026-03-04 22:11:35,627  INFO      Telegram notifications: ENABLED
+2026-03-04 22:23:39,643  INFO      Connected to chain 1  block #24,584,072
+2026-03-04 22:23:39,644  INFO      Monitoring 6 pairs across 3 DEXes
+2026-03-04 22:23:39,644  INFO      Min profit threshold: $5.0  |  Gas estimate: $1.0
+2026-03-04 22:23:39,644  INFO      Telegram notifications: ENABLED
+2026-03-04 22:23:46,246  ERROR     Scan error: name 'FLASH_LOAN_FEE_BPS' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Ethan\EthProjRmxIDE\Arbitrage\arbitrage_monitor.py", line 463, in run
+    opps = scan_pair(w3, token_a_key, token_b_key, loan_units)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ethan\EthProjRmxIDE\Arbitrage\arbitrage_monitor.py", line 310, in scan_pair
+    flash_fee_tok = loan_dec * Decimal(FLASH_LOAN_FEE_BPS) / Decimal(10_000)
+                                       ^^^^^^^^^^^^^^^^^^
+NameError: name 'FLASH_LOAN_FEE_BPS' is not defined
+2026-03-04 22:26:04,367  INFO      Connected to chain 1  block #24,584,084
+2026-03-04 22:26:04,374  INFO      Monitoring 6 pairs across 3 DEXes
+2026-03-04 22:26:04,374  INFO      Min profit threshold: $5.0  |  Gas estimate: $1.0
+2026-03-04 22:26:04,374  INFO      Telegram notifications: ENABLED
+2026-03-04 22:33:13,166  INFO      Connected to chain 1  block #24,584,119
+2026-03-04 22:33:13,167  INFO      Monitoring 6 pairs across 3 DEXes
+2026-03-04 22:33:13,167  INFO      Min profit threshold: $40.0  |  Gas estimate: $20.0
+2026-03-04 22:33:13,167  INFO      Telegram notifications: ENABLED
+2026-03-04 23:06:05,101  INFO      Connected to chain 1  block #24,584,282
+2026-03-04 23:06:05,102  INFO      Monitoring 7 pairs across 3 DEXes
+2026-03-04 23:06:05,102  INFO      Min profit threshold: $40.0  |  Gas estimate: $20.0
+2026-03-04 23:06:05,102  INFO      Telegram notifications: ENABLED
+2026-03-04 23:23:46,085  INFO      Connected to chain 1  block #24,584,370
+2026-03-04 23:23:46,086  INFO      Monitoring 7 pairs across 3 DEXes
+2026-03-04 23:23:46,086  INFO      Min profit threshold: $40.0  |  Gas estimate: $20.0
+2026-03-04 23:23:46,086  INFO      Telegram notifications: ENABLED
+2026-03-05 19:02:54,506  INFO      Connected to chain 1  block #24,590,243
+2026-03-05 19:02:54,509  INFO      Monitoring 7 pairs across 3 DEXes
+2026-03-05 19:02:54,509  INFO      Min profit threshold: $5.0  |  Gas estimate: $8.0
+2026-03-05 19:02:54,509  INFO      Telegram notifications: ENABLED
+2026-03-05 19:19:39,848  INFO      Connected to chain 1  block #24,590,327
+2026-03-05 19:19:39,848  INFO      Monitoring 7 pairs across 3 DEXes
+2026-03-05 19:19:39,849  INFO      Min profit threshold: $5.0  |  Gas estimate: $8.0
+2026-03-05 19:19:39,849  INFO      Telegram notifications: ENABLED

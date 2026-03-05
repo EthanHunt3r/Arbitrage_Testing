@@ -1,0 +1,528 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_balancerVault",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_routerA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_routerB",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "caller",
+						"type": "address"
+					}
+				],
+				"name": "InvalidCaller",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "router",
+						"type": "address"
+					}
+				],
+				"name": "RouterNotApproved",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "TokenMismatch",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "repayAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "received",
+						"type": "uint256"
+					}
+				],
+				"name": "UnprofitableTrade",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "ZeroAmount",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "tokenA",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "tokenB",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "loanAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "profit",
+						"type": "uint256"
+					}
+				],
+				"name": "ArbitrageExecuted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "router",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "approved",
+						"type": "bool"
+					}
+				],
+				"name": "RouterApproved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "oldBps",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newBps",
+						"type": "uint256"
+					}
+				],
+				"name": "SlippageUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Withdrawn",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "approvedRouters",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "balancerVault",
+				"outputs": [
+					{
+						"internalType": "contract IBalancerVault",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenB",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "loanAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "routerA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "routerB",
+						"type": "address"
+					}
+				],
+				"name": "checkProfitability",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "profitable",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "expectedProfit",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenB",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "loanAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "routerA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "routerB",
+						"type": "address"
+					}
+				],
+				"name": "executeArbitrage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20[]",
+						"name": "tokens",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "amounts",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "feeAmounts",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "bytes",
+						"name": "userData",
+						"type": "bytes"
+					}
+				],
+				"name": "receiveFlashLoan",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "router",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "approved",
+						"type": "bool"
+					}
+				],
+				"name": "setRouter",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newBps",
+						"type": "uint256"
+					}
+				],
+				"name": "setSlippage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "slippageBps",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawETH",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"details": "Balancer Vault: 0xBA12222222228d8Ba445958a75a0704d566BF2C8       (Ethereum mainnet, Polygon, Arbitrum, Optimism — same address)       THIS IS A TEMPLATE. Audit thoroughly, test on a forked network,       and understand all risks before deploying with real funds.",
+			"kind": "dev",
+			"methods": {
+				"checkProfitability(address,address,uint256,address,address)": {
+					"params": {
+						"loanAmount": "Hypothetical borrow size.",
+						"routerA": "DEX router for the buy leg  (tokenA → tokenB).",
+						"routerB": "DEX router for the sell leg (tokenB → tokenA).",
+						"tokenA": "Base token (borrowed and repaid).",
+						"tokenB": "Intermediate token."
+					},
+					"returns": {
+						"expectedProfit": "Gross profit in tokenA units (before gas costs).",
+						"profitable": "    True when tokenAOut > loanAmount."
+					}
+				},
+				"constructor": {
+					"params": {
+						"_balancerVault": "Balancer V2 Vault address.                        Use 0xBA12222222228d8Ba445958a75a0704d566BF2C8                        on Ethereum, Polygon, Arbitrum, and Optimism.",
+						"_routerA": "First DEX router  (e.g. Uniswap V2).",
+						"_routerB": "Second DEX router (e.g. SushiSwap)."
+					}
+				},
+				"executeArbitrage(address,address,uint256,address,address)": {
+					"params": {
+						"loanAmount": "Amount of tokenA to borrow from the Balancer Vault.",
+						"routerA": "DEX router for leg 1  (tokenA → tokenB, buy leg).",
+						"routerB": "DEX router for leg 2  (tokenB → tokenA, sell leg).",
+						"tokenA": "Token to borrow and end up with (base token).",
+						"tokenB": "Intermediate token used across both swap legs."
+					}
+				},
+				"receiveFlashLoan(address[],uint256[],uint256[],bytes)": {
+					"details": "Must push tokens[i] + feeAmounts[i] back to the Vault before         returning.  On Balancer V2 feeAmounts are always 0, so         repayAmount == loanAmount exactly.",
+					"params": {
+						"amounts": "Borrowed amounts array.",
+						"feeAmounts": "Fee array — currently always 0 on Balancer V2.",
+						"tokens": "Borrowed token array (length 1).",
+						"userData": "ABI-encoded (tokenA, tokenB, routerA, routerB)."
+					}
+				},
+				"withdrawToken(address,uint256)": {
+					"params": {
+						"amount": "Amount to withdraw; pass 0 to withdraw the full balance.",
+						"token": "Address of the token to withdraw."
+					}
+				}
+			},
+			"stateVariables": {
+				"slippageBps": {
+					"details": "Slippage tolerance in basis points (default 50 = 0.5 %)."
+				}
+			},
+			"title": "CryptoArbitrageBot",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"approvedRouters(address)": {
+					"notice": "Whitelisted DEX routers. Add more via setRouter()."
+				},
+				"balancerVault()": {
+					"notice": "Balancer V2 Vault — zero-fee flash-loan provider."
+				},
+				"checkProfitability(address,address,uint256,address,address)": {
+					"notice": "Simulate whether an arb would be profitable before submitting.         Invoke via eth_call — does not send a transaction.         Because Balancer V2 charges 0% flash-loan fees, repayAmount         equals loanAmount exactly; only gas costs remain (handled         off-chain in the Python monitor)."
+				},
+				"executeArbitrage(address,address,uint256,address,address)": {
+					"notice": "Initiate a Balancer-flash-loan-powered arbitrage."
+				},
+				"receiveFlashLoan(address[],uint256[],uint256[],bytes)": {
+					"notice": "Called by the Balancer Vault right after it sends the tokens."
+				},
+				"setRouter(address,bool)": {
+					"notice": "Approve or revoke a DEX router."
+				},
+				"setSlippage(uint256)": {
+					"notice": "Update slippage tolerance in basis points (max 500 = 5 %)."
+				},
+				"transferOwnership(address)": {
+					"notice": "Transfer contract ownership."
+				},
+				"withdrawETH()": {
+					"notice": "Withdraw any native ETH that ended up in this contract."
+				},
+				"withdrawToken(address,uint256)": {
+					"notice": "Withdraw any ERC-20 token held by this contract."
+				}
+			},
+			"notice": "Flash-loan-powered arbitrage across two Uniswap-V2-compatible DEXes,         using the Balancer V2 Vault as the zero-fee flash-loan provider. ┌──────────────────────────────────────────────────────────────┐ │  FLOW                                                        │ │  1. Owner calls executeArbitrage()                           │ │  2. Contract requests a flash loan from the Balancer Vault   │ │  3. Vault sends tokenA and calls receiveFlashLoan()          │ │  4. Swap tokenA → tokenB on dexA (buy leg  — cheaper price) │ │  5. Swap tokenB → tokenA on dexB (sell leg — higher price)  │ │  6. Repay exact loanAmount to Vault (Balancer fee = 0)       │ │  7. Profit stays in this contract                            │ │  8. Owner calls withdrawToken() to collect profit            │ └──────────────────────────────────────────────────────────────┘",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ArbitrageBot.sol": "CryptoArbitrageBot"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ArbitrageBot.sol": {
+			"keccak256": "0xf5fde45ef5bec1b39d42f5a81099dc3797f046c3ec48051ac7756848a32bf4c3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ca01f3f8bc0997e95f976eeeafa48c65d57d2a6c0ffa3783e276126743c520e",
+				"dweb:/ipfs/QmZposhxt9ak2DbSBNJ2Rwq9uqV7Ac28UvJ6uMG1A1tm8J"
+			]
+		}
+	},
+	"version": 1
+}
