@@ -133,7 +133,7 @@ The monitor prints a colour-coded table each scan cycle showing per-DEX WETH/USD
 When an opportunity is found and Telegram is configured, the bot sends a message like:
  
 ```
-🚨 ARB OPPORTUNITY
+ARB OPPORTUNITY
 Pair:       WETH/USDC
 Buy on:     Uniswap V2
 Sell on:    SushiSwap
